@@ -36,8 +36,8 @@ var emailBody = mailGenerator.generate(email);
 var emailText = mailGenerator.generatePlaintext(email);
 
 // Optionally, preview the generated HTML e-mail by writing it to a local file
-require('fs').writeFileSync('preview.html', emailBody, 'utf8');
-require('fs').writeFileSync('preview.txt', emailText, 'utf8');
+require('fs').writeFileSync('../dest/preview.html', emailBody, 'utf8');
+require('fs').writeFileSync('../dest/preview.txt', emailText, 'utf8');
 
 // `emailBody` now contains the HTML body,
 // and `emailText` contains the textual version.

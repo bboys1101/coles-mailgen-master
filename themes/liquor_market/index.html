@@ -1,0 +1,795 @@
+<%
+if (locals.action) {
+    locals.action.forEach(function(actionItem) {
+        // Make it possible to override action button color (specify fallback color if no color specified)
+        if (!actionItem.button.color) {
+            actionItem.button.color = 'blue';
+        }
+        deprecatedColorToHex(actionItem.button);
+    });
+
+  // Convert deprecated red/green/blue action button color to hex since we switched to a hex-based button color
+  function deprecatedColorToHex(button) {
+      if (button.color === 'red') {
+            button.color = '#DC4D2F';
+      }
+      else if (button.color === 'green') {
+            button.color = '#22BC66';
+      }
+      else if (button.color === 'blue') {
+            button.color = '#3869D4';
+      }
+  }
+}
+%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+    <title>Coles | Liquor Market</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <style type="text/css">
+    /***** GENERAL EMAIL CLIENT FIXES *****/
+      ReadMsgBody{ width: 100%;} /* Forces Hotmail to display emails at full width */
+      .ExternalClass {width: 100%;} /*Hotmail table centering fix*/
+      .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;}
+      /* Forces Hotmail to display normal line spacing*/
+      body {-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;margin:0 !important; padding:0 !important;}
+      /* Prevent Webkit and Windows Mobile platforms from changing default font sizes, while not breaking desktop design. */
+      p { margin: 1em 0;} /*Yahoo paragraph fix*/
+      table td { border-collapse: collapse;}  /*This resolves the Outlook 07, 10, and Gmail td padding issue fix*/
+      /* Remove the borders that appear when linking images with "border:none" and "outline:none" */
+      img {outline:0;}
+      a img {border:none;}
+      p {margin: 1em 0;} /*Yahoo paragraph fix*/
+      sup { line-height: 0; font-size: 60%; }
+      
+      /* HOVER STATES */
+      .btn-bg:hover {background-color:#ffffff !important;}
+      .btn:hover {border: solid 2px #f8aa00 !important; color:#f8aa00 !important;}
+      .cta:hover {color:#ffffff !important;}
+      .footerLink a:hover {color:#f8aa00 !important;}
+      .txarticlemodule:hover .txop{opacity:0.65;}
+      
+      /* BYE BYE BLUE LINKS + ORPHAN STYLE */
+      .appleLinks a {color:#333333 !important; text-decoration: none !important;}
+      .appleLinks2 a {color:#ffffff !important; text-decoration: none !important;}
+      .appleLinks3 a {color:#666666 !important; text-decoration: none !important;}
+      .mobileOnly { max-height: 0px; min-height: 0px; /*Gmail seems to add min-height by itself*/ font-size: 0; display: none; max-width: 0px; overflow: hidden;}
+    
+    /***** SMARTPHONE STYLING RULES *****/
+      @-ms-viewport{ width: device-width;}
+            
+      /***** MOBILE STYLING RULES *****/
+      @media only screen and (max-width: 480px) {
+      body[yahoo] .container { width:100% !important; height:auto !important; }
+      body[yahoo] .containermodule { width:100% !important; height:auto !important; }
+      body[yahoo] .mobile-hide { display:none !important; }
+      body[yahoo] .mobile-hidden, body[yahoo] .sideblock-hidden { display:none !important; }
+      body[yahoo] .logo { padding:10px 0 20px 0 !important;}
+      body[yahoo] .photo img { width:100% !important; height:auto !important;}
+      body[yahoo] .photo-smaller img { width:50% !important; height:auto !important;}
+      body[yahoo] .photo-smaller2 img { width:80% !important; height:auto !important;}
+      body[yahoo] .photo-smaller3 img { width:65% !important; height:auto !important;}
+      body[yahoo] .top-padding { padding: 20px 0 0 0 !important; }
+      body[yahoo] .padding img { padding: 20px 0 0 0 !important; }
+      body[yahoo] .bottom-padding { padding: 0 0 20px 0 !important; }
+      body[yahoo] .padding { padding: 0 0 20px 0 !important; }
+      body[yahoo] .no-padding { padding: 0 !important; }
+      body[yahoo] .mobileOnly { max-height: none !important; min-height: none !important; font-size: 15px !important; line-height:20px !important; display: block !important; max-width: none !important; overflow: visible !important;}
+      body[yahoo] .min-width { min-width: 100% !important; }
+      body[yahoo] .center { text-align: center !important; }
+      body[yahoo] .container { width:100% !important; min-width:100% !important; height:auto !important;}
+      }
+
+    /***** TABLET STYLING RULES *****/
+    @media only screen and (max-width: 640px) {
+      body[yahoo] .container { width:100% !important; height:auto !important; }
+      body[yahoo] .containermodule { width:100% !important; height:auto !important; }
+      body[yahoo] .mobile-hide { display:none !important; }
+      body[yahoo] .mobile-hidden, body[yahoo] .sideblock-hidden { display:none !important; }
+      body[yahoo] .logo { padding:10px 0 20px 0 !important;}
+      body[yahoo] .photo img { width:100% !important; height:auto !important;}
+      body[yahoo] .photo-smaller img { width:50% !important; height:auto !important;}
+      body[yahoo] .photo-smaller2 img { width:80% !important; height:auto !important;}
+      body[yahoo] .photo-smaller3 img { width:65% !important; height:auto !important;}
+      body[yahoo] .top-padding { padding: 20px 0 0 0 !important; }
+      body[yahoo] .padding img { padding: 20px 0 0 0 !important; }
+      body[yahoo] .bottom-padding { padding: 0 0 20px 0 !important; }
+      body[yahoo] .padding { padding: 0 0 20px 0 !important; }
+      body[yahoo] .no-padding { padding: 0 !important; }
+      body[yahoo] .mobileOnly { max-height: none !important; min-height: none !important; font-size: 15px !important; line-height:20px !important; display: block !important; max-width: none !important; overflow: visible !important;}
+      body[yahoo] .min-width { min-width: 100% !important; }
+      body[yahoo] .center { text-align: center !important; }
+      body[yahoo] .container { width:100% !important; min-width:100% !important; height:auto !important;}
+    }
+
+      /***** 6+ STYLING RULES *****/
+      @media only screen and (max-width: 414px) {
+      
+      }
+      
+      /***** 6 STYLING RULES *****/
+      @media only screen and (max-width: 375px) {
+      
+      }
+      
+      /***** 5S STYLING RULES *****/
+      @media only screen and (max-width: 320px) {
+      
+      }
+      
+    /***** ALL ANIMATIONS *****/
+    .fadeIn1 {
+    animation-name: fadeIn1;
+    -webkit-animation-name: fadeIn1;
+    animation-duration: 1.6s;
+    -webkit-animation-duration: 1.6s; 
+    }
+    @keyframes fadeIn1 {
+    0% {opacity: 0;}
+    40% {opacity: 0;}
+    100% {opacity: 1;}
+    }
+    @-webkit-keyframes fadeIn1 {
+    0% {opacity: 0;}
+    40% {opacity: 0;}
+    100% {opacity: 1;}
+    }
+  
+  .fadeIn2 {
+    animation-name: fadeIn2;
+    -webkit-animation-name: fadeIn2;
+    animation-duration: 2.8s;
+    -webkit-animation-duration: 2.8s; 
+    }
+    @keyframes fadeIn2 {
+    0% {opacity: 0;}
+    40% {opacity: 0;}
+    100% {opacity: 1;}
+    }
+    @-webkit-keyframes fadeIn2 {
+    0% {opacity: 0;}
+    40% {opacity: 0;}
+    100% {opacity: 1;}
+    }
+  
+    .txop{opacity:0.65;transition: opacity .50s ease-in-out;}
+  
+    *[class=txop]{opacity:1;}
+  
+    </style>
+    
+    <!--[if gte mso 9]>
+    <style>
+        sup { font-size: 100% !important; }
+        #outlookholder {  width:600px; }
+    </style> 
+    <![endif]-->
+       
+</head>
+
+<body dir="<%- textDirection %>" style="margin: 0px; padding:0px; min-width: 100%; -webkit-text-size-adjust:none;" yahoo="fix">
+    <div class="preheader" style="font-size: 1px; line-height:1px; display: none !important; mso-hide:all;">
+      Your new local liquor market now open
+    </div>
+
+    <!--*** Start of: Header ***-->
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+          <td align="center" bgcolor="#ffffff">
+            <table class="container" width="600" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td class="fadeIn1" valign="top" align="center" width="100%" style="padding: 20px 20px 0 20px; font-family:Arial, sans-serif; font-size:11px; color:#7d7d7d; line-height:24px; text-align:center;">
+
+                  Is this email not displaying correctly? 
+                  <a style="font-family:Arial, sans-serif; font-size:11px; color:#7d7d7d; line-height:24px;" href="$formlink(campaignname(),FIRST_NAME,STATE_)$" target="_blank">View as a webpage</a>
+
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+    </table>
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+          <td class="fadeIn1" align="center" bgcolor="#ffffff" style="padding:20px 20px 40px 20px;">
+            <table class="container" bgcolor="#ffffff" width="600" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td class="photo" valign="top" align="center">
+
+                  <a href="http://www.liquor-market.com.au/" target="_blank">
+                    <img src="img/logo.png" width="520" alt="Liquor Market" style="display: block; border: 0; color:#000000; font-family:Arial, sans-serif; font-size:16px;">
+                  </a>
+
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+    </table>    
+    <!--*** End of: Header ***-->
+    
+    <!--*** Start of: Hero ***-->
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+          <td align="center" bgcolor="#1e1e1e" style="padding:0 20px 0 20px;">
+            <table class="container" bgcolor="#1e1e1e" width="600" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td class="photo fadeIn2" valign="top" align="center">
+                  
+                  <a href="http://www.liquor-market.com.au/" target="_blank">
+                    <img src="img/hero.jpg" width="600" alt="Your new local liquor market now open" style="display: block; border: 0; color:#ffffff; font-family:Arial, sans-serif; font-size:20px; font-weight: bold;">
+                  </a>
+
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+    </table>    
+    <!--*** End of: Hero ***-->
+    
+    <!--*** Start of: Intro Module ***-->
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+          <td align="center" bgcolor="#ffffff" style="padding:60px 20px 40px 20px;">
+            <table class="container" bgcolor="#ffffff" width="600" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td class="photo-smaller2" valign="top" align="center">
+                  
+                  <img src="img/hdg-1.png" width="465" alt="Welcome to liquor market" style="display: block; border: 0; color:#000000; font-family:Arial, sans-serif; font-size:16px;">
+
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+    </table>    
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+     <tr>
+      <td align="center" bgcolor="#ffffff" style="padding:0 20px;">
+        <table class="container" width="600" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td valign="top" align="left" style="padding:0 0 60px 0; font-family:Arial, sans-serif; font-size:18px; color:#333333; line-height:26px;">
+
+                    First Choice Liquor Ringwood has changed! We're now Liquor Market Ringwood. Our grand opening is this weekend and we're inviting you to join the celebration.
+                    <br /><br />
+                    At Liquor Market, we keep it simple and our costs low, so you pay less. We take pride in what we do and sharing our knowledge about the fantastic drinks we sell. We also give you the chance to meet the winemakers, distillers and brewers behind the drinks you love.
+                    <br /><br />
+                    We'll keep you updated on events and special offers, so you always know what's happening at your local Liquor Market. 
+                    Head down to Liquor Market Ringwood and meet Aaron and the team today!
+                    <br /><br />
+                    Find out more about the new store at <a style="color:#333333; text-decoration: underline;" href="http://www.liquor-market.com.au/" target="_blank">liquor-market.com.au</a> or by following us on Facebook.
+
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    </table>  
+    <!--*** End of: Intro Module ***-->
+    
+    <!--*** Start of: 2 Image Block Module ***-->
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+          <td align="center" bgcolor="#ececec" style="padding:60px 20px 40px 20px;">
+            <table class="container" bgcolor="#ececec" width="600" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td class="photo-smaller2" valign="top" align="center">
+
+                    <img src="img/hdg-specials.png" width="360" alt="Opening week specials" style="display: block; border: 0; color:#000000; font-family:Arial, sans-serif; font-size:16px;">
+
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+    </table>   
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+        <td align="center" valign="top" bgcolor="#ececec">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+              <td class="min-width" align="center" style="padding: 0px 30px 0 30px; min-width:600px;">
+              <!--[if gte mso 9]>
+                 <table id="outlookholder" border="0" cellspacing="0" cellpadding="0" align="center"><tr><td>
+                 <![endif]-->
+              <!--[if (IE)]>
+                 <table border="0" cellspacing="0" cellpadding="0" width="600" align="center"><tr><td>
+                 <![endif]-->
+                 <table border="0" cellpadding="0" cellspacing="0" style="width: 100%; max-width: 600px !important;" class="container">
+                  <tr>
+                    <td align="left" style="padding:0 0 20px 0;">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                          <td align="left" valign="top">
+                            <table width="299" border="0" cellspacing="0" cellpadding="0" align="left" class="container">
+                              <tr>
+                                <td align="center" valign="top" style="padding:0 0 40px 0;">
+                                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <tr>
+                                      <td class="photo-smaller3" align="center" valign="top">
+
+                                        <img src="img/img-2col-l.png" width="280" alt="30% OFF" style="display: block; border: 0; color:#000000; font-family:Arial, sans-serif; font-size:18px; font-weight:bold; text-transform: uppercase;">
+
+                                      </td>
+                                    </tr>
+                                  </table>                                                    
+                                </td>
+                              </tr>
+                            </table>
+                            <!--[if gte mso 9]>
+                             </td>
+                             <td valign="top" width="20">&nbsp;</td>
+                            <td valign="top">
+                             <![endif]-->
+                            <!--[if (IE)]>
+                            </td>
+                            <td valign="top" width="20">&nbsp;</td>
+                            <td valign="top">
+                            <![endif]-->    
+                            <table cellspacing="0" cellpadding="0" align="right" width="299" class="container">
+                              <tr>
+                                <td valign="top" style="padding:0 0 40px 0;">
+                                   <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                     <tr>
+                                      <td class="photo-smaller3" align="center" valign="top">
+                                        
+                                        <img src="img/img-2col-r.png" width="280" alt="Save $6*" style="display: block; border: 0; color:#000000; font-family:Arial, sans-serif; font-size:18px; font-weight:bold; text-transform: uppercase;">
+
+                                      </td>
+                                    </tr>
+                                  </table>
+                                </td>
+                              </tr>
+                            </table>                                        
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              <!--[if mso]>
+                  </td></tr></table>
+                  <![endif]-->
+              <!--[if (IE)]>
+                  </td></tr></table>
+                  <![endif]-->                
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <!--*** End of: 2 Image Block Module ***-->
+    
+    <!--*** Start of: 3 Image Block Module ***-->
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+          <td align="center" bgcolor="#ffffff" style="padding:60px 20px 40px 20px;">
+            <table class="container" bgcolor="#ffffff" width="600" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td class="photo-smaller2" valign="top" align="center">
+                  
+                  <img src="img/hdg-opening.png" width="350" alt="Grand opening events" style="display: block; border: 0; color:#000000; font-family:Arial, sans-serif; font-size:16px;">
+
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+    </table>   
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+        <td align="center" valign="top" bgcolor="#ffffff">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+              <td class="min-width" align="center" style="padding: 0px 30px 0 30px; min-width:600px;">
+              <!--[if gte mso 9]>
+                 <table id="outlookholder" border="0" cellspacing="0" cellpadding="0" align="center"><tr><td>
+                 <![endif]-->
+              <!--[if (IE)]>
+                 <table border="0" cellspacing="0" cellpadding="0" width="600" align="center"><tr><td>
+                 <![endif]-->
+                 <table border="0" cellpadding="0" cellspacing="0" style="width: 100%; max-width: 600px !important;" class="container">
+                  <tr>
+                    <td align="left" style="padding:0;">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                          <td align="left" valign="top">
+                            <table width="199" border="0" cellspacing="0" cellpadding="0" align="left" class="container">
+                              <tr>
+                                <td align="center" valign="top" style="padding:0;">
+                                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <tr>
+                                      <td class="photo-smaller" align="center" valign="top">
+
+                                        <img src="img/img-3col-1.jpg" width="188" alt="Yalumba" style="display: block; border: 0; color:#000000; font-family:Arial, sans-serif; font-size:14px; font-weight:normal; text-transform: uppercase;">
+
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top" align="left" style="padding:20px 0 0 5px; font-family:Arial, sans-serif; font-size:14px; color:#333333; line-height:23px; font-weight: bold;">
+
+                                          Meet The Winemaker - Yalumba Experience
+
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                      <td valign="top" align="left" style="padding:10px 0 40px 5px; font-family:Arial, sans-serif; font-size:14px; color:#333333; line-height:23px; font-weight: normal;">
+
+                                        <span class="appleLinks">Saturday 15 &amp; Sunday 16&nbsp;October, 10am - 4pm</span>
+
+                                      </td>
+                                    </tr>
+                                  </table>                                                    
+                                </td>
+                              </tr>
+                            </table>
+                            <!--[if gte mso 9]>
+                             </td>
+                             <td valign="top" width="20">&nbsp;</td>
+                            <td valign="top">
+                             <![endif]-->
+                            <!--[if (IE)]>
+                            </td>
+                            <td valign="top" width="20">&nbsp;</td>
+                            <td valign="top">
+                            <![endif]-->    
+                            <table width="200" border="0" cellspacing="0" cellpadding="0" align="left" class="container">
+                              <tr>
+                                <td valign="top" style="padding: 0;">
+                                   <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                     <tr>
+                                      <td class="photo-smaller" align="center" valign="top">
+
+                                        <img src="img/img-3col-2.jpg" width="188" alt="In-store Cooking" style="display: block; border: 0; color:#000000; font-family:Arial, sans-serif; font-size:14px; font-weight:normal; text-transform: uppercase;">
+
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td valign="top" align="left" style="padding:20px 0 0 5px; font-family:Arial, sans-serif; font-size:14px; color:#333333; line-height:23px; font-weight: bold;">
+                                        
+                                        In-store Cooking -  Courtney <span class="mobile-hidden"><br /></span>&amp; Michael Live
+                                      
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td valign="top" align="left" style="padding:10px 0 40px 5px; font-family:Arial, sans-serif; font-size:14px; color:#333333; line-height:23px; font-weight: normal;">
+                                        
+                                        <span class="appleLinks">Saturday 15 October, <span class="mobile-hidden"><br /></span>10am - 4pm</span>
+
+                                      </td>
+                                    </tr>
+                                  </table>
+                                </td>
+                              </tr>
+                            </table>   
+                            <!--[if gte mso 9]>
+                             </td>
+                             <td valign="top" width="20">&nbsp;</td>
+                            <td valign="top">
+                             <![endif]-->
+                            <!--[if (IE)]>
+                            </td>
+                            <td valign="top" width="20">&nbsp;</td>
+                            <td valign="top">
+                            <![endif]-->    
+                            <table cellspacing="0" cellpadding="0" align="right" width="200" class="container">
+                              <tr>
+                                <td valign="top" style="padding:0;">
+                                   <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                     <tr>
+                                      <td class="photo-smaller" align="center" valign="top">
+                                        <img src="img/img-3col-3.jpg" width="188" alt="Thunder Road" style="display: block; border: 0; color:#000000; font-family:Arial, sans-serif; font-size:14px; font-weight:normal; text-transform: uppercase;"></td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top" align="left" style="padding:20px 0 0 5px; font-family:Arial, sans-serif; font-size:14px; color:#333333; line-height:23px; font-weight: bold;">
+
+                                          Meet The Makers - Thunder Road Brewing Company
+
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                      <td valign="top" align="left" style="padding:10px 0 40px 5px; font-family:Arial, sans-serif; font-size:14px; color:#333333; line-height:23px; font-weight: normal;">
+                                        
+                                        <span class="appleLinks">Saturday 15 &amp; Sunday <span class="mobile-hidden"><br /></span>16 October, 12 - 3pm</span>
+
+                                      </td>
+                                    </tr>
+                                  </table>
+                                </td>
+                              </tr>
+                            </table>                                          
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              <!--[if mso]>
+                  </td></tr></table>
+                  <![endif]-->
+              <!--[if (IE)]>
+                  </td></tr></table>
+                  <![endif]-->                
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <!--*** End of: 3 Image Block Module ***-->
+    
+    <!--*** Start of: Banner Module ***-->
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+          <td align="center" bgcolor="#f8aa00" style="padding:20px 20px 0 20px;">
+            <table class="container" bgcolor="#f8aa00" width="600" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td class="photo" valign="top" align="center">
+
+                  <a href="http://liquormarket.dynamiccatalogue.com.au/" target="_blank">
+                    <img src="img/banner.png" width="482" alt="Check out our latest specials >>" style="display: block; border: 0; color:#000000; font-family:Arial, sans-serif; font-size:16px; font-weight: bold;">
+                  </a>
+
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+    </table>    
+    <!--*** End of: Banner Module ***-->
+
+    <!-- Start of: Footer Details -->
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+        <td align="center" valign="top" bgcolor="#1e1e1e">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+              <td class="min-width" align="center" style="padding: 0px 30px 10px 30px; min-width:600px;">
+              <!--[if gte mso 9]>
+                 <table id="outlookholder" border="0" cellspacing="0" cellpadding="0" align="center"><tr><td>
+                 <![endif]-->
+              <!--[if (IE)]>
+                 <table border="0" cellspacing="0" cellpadding="0" width="600" align="center"><tr><td>
+                 <![endif]-->
+                 <table border="0" cellpadding="0" cellspacing="0" style="width: 100%; max-width: 600px !important;" class="container">
+                  <tr>
+                    <td align="left" style="padding:40px 0 0 0;">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                          <td align="left" valign="top">
+                            <table width="435" border="0" cellspacing="0" cellpadding="0" align="left" class="container">
+                              <tr>
+                                <td align="center" valign="top" style="padding-bottom: 20px;">
+                                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <tr>
+                                      <td class="center" valign="top" style="font-family:Arial, sans-serif; font-weight:normal; color:#ffffff; font-size:16px; line-height:24px; text-align:left; padding:10px 0 0 0;">
+                                       
+                                         <span class="appleLinks2">
+                                         <strong>Liquor Market - Ringwood</strong>
+                                         <br />
+                                         59 Maroondah Hwy Ringwood
+                                         <br />
+                                         03 9871 6700
+                                         </span>
+
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td class="center" valign="top" style="font-family:Arial, sans-serif; font-weight:normal; color:#ffffff; font-size:16px; line-height:24px; text-align:left; padding:8px 0 0 0;">
+                                          
+                                          <a style="color:#f8aa00; text-decoration: underline; font-weight: bold;" target="_blank" href="http://www.liquor-market.com.au/">liquor-market.com.au</a>
+
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td align="center" valign="top" style="padding:0;">
+                                        <table border="0" cellpadding="0" cellspacing="0" align="center">
+                                          <tr>
+                                            <td width="30" align="center" valign="top" style="font-family:Arial, sans-serif; font-weight:normal; color:#ffffff; font-size:16px; line-height:24px; text-align:left; padding:10px 0 0 0;">
+
+                                                <a href="https://www.facebook.com/LiquorMarketAU" target="_blank">
+                                                  <img src="img/ico-facebook.png" width="30" alt="fb" style="display: block; border: 0; color:#ffffff; font-family:Arial, sans-serif; font-size:9px;">
+                                                </a>
+
+                                            </td>
+                                            <td width="400" class="mobile-hidden" valign="top">&nbsp;</td>
+                                          </tr>
+                                         </table>
+                                      </td>
+                                    </tr>
+                                  </table>                                                    
+                                </td>
+                              </tr>
+                            </table>
+                            <!--[if gte mso 9]>
+                             </td>
+                             <td valign="top" width="30">&nbsp;</td>
+                            <td valign="top">
+                             <![endif]-->
+                            <!--[if (IE)]>
+                            </td>
+                            <td valign="top" width="30">&nbsp;</td>
+                            <td valign="top">
+                            <![endif]-->    
+                            <table cellspacing="0" cellpadding="0" align="right" width="160" class="container padding-top-twenty">
+                              <tr>
+                                <td class="mobile-hidden" valign="top" style="padding:0 0 20px 0;">
+                                   <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                     <tr>
+                                      <td align="center" valign="top">&nbsp;</td>
+                                    </tr>
+                                  </table>
+                                </td>
+                              </tr>
+                            </table>                                        
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              <!--[if mso]>
+                  </td></tr></table>
+                  <![endif]-->
+              <!--[if (IE)]>
+                  </td></tr></table>
+                  <![endif]-->                
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <!-- End of: Footer Details -->
+      
+    <!--*** Start of: Terms and Conditions ***-->
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="center" bgcolor="#1e1e1e" style="padding: 0 30px;">
+                <!--*** Start of: Table used to set width of email ***-->
+                <table class="container" width="600" border="0" cellspacing="0" cellpadding="0" style="min-width:600px;">
+                    <tr>
+                        <td class="footerLink" style="font-family: Arial, sans-serif; color:#666666; font-size:12px; line-height:20px; padding:0; text-align:left;">
+
+                            <span class="appleLinks3">Prices apply from 12/10/16 until 18/10/16, unless sold out. Retail limits apply. All save statements are based on regular shelf prices. All wine, sparkling and champagne bottles are 750mL unless otherwise stated. Price available on products purchased in the multiples specified. No further discount. Products and offers not available online. Advertised prices include the % off discount. * 30% off Marlborough Sauvignon Blanc excludes Wahu Marlborough Sauvignon Blanc which is an every day price of $6.95. Retail limits apply. While stocks last. No further discounts.</span>
+                            
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <!--*** End of: Terms and Conditions ***-->
+    
+    <!--*** Start of: Footer ***-->
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td align="center" bgcolor="#1e1e1e" style="padding:0 20px 0 20px;">
+                <table class="container" bgcolor="#1e1e1e" width="600" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td align="left" class="mobile-hidden footerLink" style="padding:30px 0 30px 0;">
+                            <table border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                  <td align="left" style="font-family: Arial, sans-serif; font-size:13px; padding-right:10px; color:#666666;"><span class="appleLinks3">&copy; Liquor Market 2016</span></td>
+                                  <td align="left" style="font-family: Arial, sans-serif; font-size:13px; padding: 0 10px; color:#666666;"><a href="$UnsubscribeLink$" target="_blank" style="color:#666666; text-decoration:none;">Unsubscribe</a></td>
+                                  <td align="left" style="font-family: Arial, sans-serif; font-size:13px; padding: 0 10px; color:#666666;"><a href="http://www.liquor-market.com.au/privacy" target="_blank" style="color:#666666; text-decoration:none;">Privacy Policy</a></td>
+                                  <td align="left" style="font-family: Arial, sans-serif; font-size:13px; padding: 0 0 0 10px; color:#666666;"><a href="http://www.liquor-market.com.au/" target="_blank" style="color:#666666; text-decoration:none;">Contact Us</a></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <!--*** End of: Footer ***-->
+
+    <!--*** Start of: Footer (Mobile) ***-->
+    <!--[if !mso]><!-->
+    <div class="mobileOnly" style="background-color:#1e1e1e; max-height: 0px;min-height: 0px;font-size: 0;display: none;max-width: 0px;overflow: hidden;">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+                <td bgcolor="#1e1e1e" class="mobileOnly footerLink" style="max-height: 0px;min-height: 0px;font-size: 0;display: none;max-width: 0px;overflow: hidden;" cellpadding="0" cellspacing="0" border="0" align="center" width="0" height="0">
+                    <table class="container" width="600" border="0" cellspacing="0" cellpadding="0" style="min-width:600px;">
+                        <tr>
+                            <td align="center" style="padding:20px 0 0 0;">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td bgcolor="#1e1e1e" align="center" style="color:#666666; font-family: Arial, sans-serif;font-size:13px;line-height:50px;text-align:center;text-decoration:none;">
+                                            <div>
+                                                <span class="appleLinks3">&copy; Liquor Market 2016</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center" style="border-top: solid 1px #3e3c3c;">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td align="center">
+                                            <div>
+                                                <a href="$UnsubscribeLink$" target="_blank" style="background-color:#1e1e1e;color:#666666;display:inline-block;font-family: Arial, sans-serif;font-size:13px;line-height:50px;text-align:center;text-decoration:none;width:100%;-webkit-text-size-adjust:none;">Unsubscribe</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center" style="border-top: solid 1px #3e3c3c;">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td align="center">
+                                            <div>
+                                                <a href="http://www.liquor-market.com.au/privacy" target="_blank" style="background-color:#1e1e1e;color:#666666;display:inline-block;font-family: Arial, sans-serif;font-size:13px;line-height:50px;text-align:center;text-decoration:none;width:100%;-webkit-text-size-adjust:none;">Privacy Policy</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center" style="border-top: solid 1px #3e3c3c; padding:0 0 20px 0;">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td align="center">
+                                            <div>
+                                                <a href="http://www.liquor-market.com.au/" target="_blank" style="background-color:#1e1e1e;color:#666666;display:inline-block;font-family: Arial, sans-serif;font-size:13px;line-height:50px;text-align:center;text-decoration:none;width:100%;-webkit-text-size-adjust:none;">Contact Us</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <!--<![endif]-->
+    <!--*** End of: Footer (Mobile) ***-->
+    
+    <!--*** Start of: ID 25 ***-->
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="center" bgcolor="#1e1e1e" style="padding: 0 30px 40px 30px;">
+                <!--*** Start of: Table used to set width of email ***-->
+                <table class="container" width="600" border="0" cellspacing="0" cellpadding="0" style="min-width:600px;">
+                    <tr>
+                      <td align="center">
+                          <table class="container" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td align="center" style="font-family: Arial, sans-serif; color:#666666; font-size:12px; line-height:20px; padding:0; text-align:center;">
+                                        <img src="img/ico-id25.png" width="30" alt="ID.25" style="display: block; border: 0; color:#ffffff; font-family:Arial, sans-serif; font-size:9px;">
+                                    </td>
+                                    <td align="center" style="font-family: Arial, sans-serif; color:#666666; font-size:12px; line-height:20px; padding:0 0 0 10px; text-align:center;">
+                                        Liquor Market supports the responsible enjoyment of alcohol.
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>                                    
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <!--*** End of: ID 25 ***-->
+
+    <!--*** Start of: Gmail App (iOS) Fix ***-->
+    <div class="mobile-hidden" style="background-color:#1e1e1e; display:none; white-space:nowrap; font:15px courier; color:#1e1e1e; mso-hide:all;" bgcolor="#1e1e1e">
+        - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    </div>
+    <!--*** End of: Gmail App (iOS) Fix ***-->
+
+</body>
+</html>
